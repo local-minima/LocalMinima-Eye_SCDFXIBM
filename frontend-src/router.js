@@ -2,11 +2,12 @@ import Vue from 'vue';
 import VueRouter from "vue-router";
 
 import Home from "./view/Home";
+import MapView from "./view/MapView";
 Vue.use(VueRouter);
 
 const routes = [
   { path: '/', component: Home, name: "Home" },
-  // { path: '/signup', component: SignUp, name: "Sign Up" },
+  { path: '/map', component: MapView, name: "MapView" },
   // { path: '/dashboard', component: Dashboard, name: "Dashboard" },
   // { path: '/start/:game_id', component: Start, name: "Start" },
   // { path: '/results', component: Results, name: "Results" },
