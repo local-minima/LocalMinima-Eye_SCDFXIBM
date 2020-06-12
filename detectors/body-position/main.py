@@ -2,26 +2,23 @@ import requests
 import sys
 import math
 
-import numpy as np
-
 POSEENDPOINT = "https://scdfxibm2020.garykim.dev/pose/model/predict"
-#POSEENDPOINT = "http://httpbin.org/post"
 
 # Top down body parts
 PRIORITIES = ["REye", "LEye", "REar", "LEar", "Nose", "Neck", "RShoudler", "LShoulder", "RHip", "LHip", "RKnee", "LKnee", "LAnkle", "RAnkle"]
 
-def isLyingDown(path=""):
+def apiData(path=""):
     files = {
-        'file':  open(path, 'rb').read()
+        'file': open(path, 'rb').read()
     }
     res = requests.post(POSEENDPOINT, files=files)
-    data = res.json()
+    return res.json()
 
+def isLyingDown(path=""):
     # Make prediction
+    data = apiData(path)
     predictions = []
     for person in data['predictions']:
-        x = np.array(list(map(lambda i: i['x'], person['body_parts']))).reshape((-1, 1))
-        y = np.array(list(map(lambda i: i['y'], person['body_parts'])))
         top = significantPoint(True, person['body_parts'])
         bottom = significantPoint(False, person['body_parts'])
         if top['part_id'] == bottom['part_id']:
@@ -35,7 +32,7 @@ def isLyingDown(path=""):
         predictions.append(prediction)
     return predictions
 
-def significantPoint(top=False, body_parts = []):
+def significantPoint(top=False, body_parts=[]):
     working = PRIORITIES
     if not top:
         working = list(reversed(working))
