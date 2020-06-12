@@ -1,12 +1,31 @@
 <template>
-  <div id="root">
-    <canvas id="map"/>
+  <div id="overlay-root" :style="hidden ? 'transform: translate(500px,0px);' : ''">
+    <canvas id="map" />
   </div>
 </template>
 
 <script>
+const options = {
+  tilt: 50,
+  // distance: 3000,
+  distance: 300,
+  center: new harp.GeoCoordinates(1.3455, 103.8361),
+  angle: 50
+};
 export default {
   name: "map-overlay",
+  // beforeMount() {
+  //   document.getElementById('overlay-root').style.transform = 'transform: translate(-500px,0px);'
+  // },
+  props: ["hidden", "lat", "lng"],
+  watch: {
+    lat: function() {
+      options.center = new harp.GeoCoordinates(this.lat, this.lng)
+    },
+    lng: function() {
+      options.center = new harp.GeoCoordinates(this.lat, this.lng)
+    }
+  },
   mounted() {
     const map = new harp.MapView({
       canvas: document.getElementById("map"),
@@ -14,8 +33,6 @@ export default {
       maxVisibleDataSourceTiles: 40,
       tileCacheSize: 100
     });
-
-
 
     // const map = new harp.MapView({
     //   canvas: document.getElementById("3dmap"),
@@ -39,29 +56,27 @@ export default {
     map.addDataSource(omvDataSource);
 
     // const controls = new harp.MapControls(map);
-
-    const options = {
-      tilt: 50,
-      distance: 3000,
-      center: new harp.GeoCoordinates(1.3455, 103.8361),
-      angle: 50
-    };
-
-    map.addEventListener(harp.MapViewEventNames.Render, () => {
-      map.lookAt(
-        options.center,
-        options.distance,
-        options.tilt,
-        (options.angle += 0.07)
-      );
-    });
+    options.center = new harp.GeoCoordinates(this.lat, this.lng)
+    map.addEventListener(
+      harp.MapViewEventNames.Render,
+      () => {
+        map.lookAt(
+          options.center,
+          options.distance,
+          options.tilt,
+          (options.angle += 0.07)
+        );
+      }
+    );
     map.beginAnimation();
+    // document.getElementById('overlay-root').style.transform = '';
+    // this.hidden = false;
   }
 };
 </script>
 
 <style scoped>
-#root {
+#overlay-root {
   position: fixed;
   right: 0;
   top: 0;
@@ -77,6 +92,8 @@ export default {
   z-index: 1000000;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   /* background: #fff; */
+  transition-property: transform;
+  transition-duration: 1s;
 }
 
 #map {
