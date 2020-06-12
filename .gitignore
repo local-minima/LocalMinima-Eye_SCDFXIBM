@@ -1,0 +1,6 @@
+# Built files
+/dist
+/static
+
+# Node
+/node_modules
