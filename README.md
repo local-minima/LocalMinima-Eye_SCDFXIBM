@@ -8,7 +8,7 @@
 
 ##### Gary Kim
 
-##### Young Gi Roh
+##### Yong Gi Roh
 
 ### Getting Started
 
