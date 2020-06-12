@@ -5,6 +5,9 @@ import store from './store/store';
 // store.dispatch('getUser');
 // store.dispatch('getConfig');
 
+import './styles/carbon-components.min.css';
+import CarbonComponentsVue from "@carbon/vue";
+Vue.use(CarbonComponentsVue);
 
 // Styling + Fonts
 // import '@openfonts/open-sans-condensed_all';
