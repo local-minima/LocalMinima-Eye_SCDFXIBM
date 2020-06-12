@@ -6,5 +6,7 @@ Once the pose is dectected, we take the highest point on the body and the lowest
 
 | Image | Lying Down Probabilities |
 | :---: | :---: |
-| ![](http://vortexyogahikinginsedona.com/wp-content/uploads/2015/06/Lie-down-grass.jpg) | `[0.8304986810771359]` |
-| ![](https://upload.wikimedia.org/wikipedia/commons/6/68/Akha_cropped_hires.JPG) | `[0.06711739092108071, 0.08062126433075767]` |
+| ![](canvas2.png) | `[0.69988343955756]` |
+| ![](canvas1.png) | `[0.06711739092108071, 0.08062126433075767]` |
+
+Images from <http://vortexyogahikinginsedona.com/wp-content/uploads/2015/06/Lie-down-grass.jpg> and <https://upload.wikimedia.org/wikipedia/commons/6/68/Akha_cropped_hires.JPG> respectively.

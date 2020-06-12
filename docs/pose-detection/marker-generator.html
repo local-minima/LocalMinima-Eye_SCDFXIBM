@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <title>temp</title>
+    <style>
+
+    </style>
+</head>
+
+<canvas id="canvas"></canvas>
+
+<script>
+    let image = new Image();
+    image.src = `IMAGE_PATH`;
+    image.onload = main
+    function main() {
+        let c = document.getElementById("canvas");
+        c.style.height = image.height;
+        c.style.width = image.width;
+        c.height = image.height;
+        c.width = image.width;
+        let ctx = c.getContext("2d");
+        ctx.drawImage(image, 0, 0);
+        let parts = []; // Put body parts from API here
+        parts.forEach(i => {
+            ctx.beginPath();
+            ctx.arc(i.x, i.y, 5, 0, 2 * Math.PI, true);
+            ctx.fillStyle = "yellow";
+            ctx.fill();
+            ctx.closePath();
+        });
+    }
+
+</script>
+
+</html>
