@@ -1,11 +1,15 @@
 <template>
   <div>
     <div id="mapid"></div>
+    <map-overlay/>
   </div>
 </template>
 
 <script>
+import MapOverlay from '../components/MapOverlay';
+
 let mymap;
+let lastMarker;
 
 const badMarkIcon = L.icon({
     iconUrl: '/bad-marker.png',
@@ -17,13 +21,28 @@ const badMarkIcon = L.icon({
 		shadowSize:  [41, 41]
 });
 
-function handleCameraClick(e) {
+const selectMarkIcon = L.icon({
+    iconUrl: '/select-marker.png',
+    shadowUrl: '/marker-shadow.png',
+    iconSize:    [25, 41],
+		iconAnchor:  [12, 41],
+		popupAnchor: [1, -34],
+		tooltipAnchor: [16, -28],
+		shadowSize:  [41, 41]
+});
+
+function handleCameraClick(e,marker,isBad) {
   // const newCenter = {
   //   lat: e.latlng.lat,
   //   lng: e.latlng.lng,
   // };
+  console.log(e);
+  if (lastMarker) lastMarker.marker.setIcon(lastMarker.isBad ? badMarkIcon : new L.Icon.Default());
+  marker.setIcon(selectMarkIcon)
   const center = mymap.latLngToLayerPoint(e.latlng).subtract(mymap.containerPointToLayerPoint(mymap.getSize()._divideBy(2)));
-  mymap.panBy(center.subtract([-screen.width/6,0]));
+  mymap.panBy(center.subtract([-window.innerWidth/6,0]));
+  
+  lastMarker = {marker,isBad};
   // .subtract(L.containerPointToLayerPoint(L.getSize()._divideBy(2)))
   // mymap.panTo(e.latlng);
   // setTimeout(() => mymap.panBy([100,0]), 0.5);
@@ -36,7 +55,9 @@ export default {
     
     mymap = L.map("mapid").setView([1.3455, 103.8361], 12);
     // L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
+    // L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
+    // L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+    L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v8/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZ2FyeS1raW0iLCJhIjoiY2syMGRjNTVxMTMwajNub2liODQ1OGs1ZCJ9.O631cR7G_-RlLGfIwXcCiA', {
 
 
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -54,12 +75,15 @@ export default {
         icon: isBad ? badMarkIcon : new L.Icon.Default(),
       });
       marker.addTo(mymap);
-      marker.on('click', handleCameraClick);
+      marker.on('click', function(e) {handleCameraClick(e, marker, isBad)});
     }
   },
   mapInit() {
     console.log("hello");
-  }
+  },
+  components: {
+    'map-overlay': MapOverlay,
+  },
 };
 </script>
 
