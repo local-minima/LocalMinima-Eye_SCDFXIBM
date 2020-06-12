@@ -8,7 +8,7 @@ POSEENDPOINT = "https://scdfxibm2020.garykim.dev/pose/model/predict"
 #POSEENDPOINT = "http://httpbin.org/post"
 
 # Top down body parts
-PRIORITIES = ["REye", "LEye", "Reye", "LEye", "Nose", "Neck", "RShoudler", "LShoulder", "RHip", "LHip", "RKnee", "LKnee", "LAnkle", "RAnkle"]
+PRIORITIES = ["REye", "LEye", "REar", "LEar", "Nose", "Neck", "RShoudler", "LShoulder", "RHip", "LHip", "RKnee", "LKnee", "LAnkle", "RAnkle"]
 
 def isLyingDown(path=""):
     files = {
@@ -45,7 +45,7 @@ def significantPoint(top=False, body_parts = []):
                 return part
     # Means that there are literally no usable points. At this point, assume they are standing up
     return {
-        'part_id': 0 if top else 1,
+        'part_id': 0,
         'part_name': 'fake',
         'score': "0",
         'x': 0,
