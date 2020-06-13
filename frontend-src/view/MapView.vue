@@ -39,6 +39,10 @@ export default {
   mounted() {
     
     this.mymap = L.map("mapid").setView([1.3455, 103.8361], 12);
+    this.mymap.on('click', (() => {
+      if (this.lastMarker.marker !== undefined) this.lastMarker.marker.setIcon(this.lastMarker.isBad ? badMarkIcon : new L.Icon.Default());
+      this.$set(this.lastMarker, 'marker', undefined)
+    }).bind(this));
     // L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     // L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
     // L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
