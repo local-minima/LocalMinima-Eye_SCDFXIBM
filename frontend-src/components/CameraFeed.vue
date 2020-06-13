@@ -15,7 +15,9 @@
         <img :id="problem ==='fall' ? 'active' : 'inactive'" @mouseout="unhover()" @mouseover="hover('fall')" src="/icon/fall.svg" />
       </div>
     </div>
-    <tipbox :hidden="!showTip" :text="tipMsg" :isBad="onHover === problem" />
+    <tipbox height="81vh" :hidden="!showTip" side="left" :isBad="onHover === problem">
+      <h1>{{tipMsg}}</h1>
+    </tipbox>
   </div>
 </template>
 
