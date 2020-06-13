@@ -16,7 +16,7 @@
 
 ### The Architecture
 
-![Our Project's Architecture](docs/Project_Architecture.png)
+![Our Project's Architecture](docs/Project_Architecture_Final.png)
 
 ### Detailed Description Link: 
 
