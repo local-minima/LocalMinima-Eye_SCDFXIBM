@@ -1,19 +1,22 @@
 import cv2
 import requests
-import os
-import argparse
+from http.server import BaseHTTPRequestHandler, HTTPServer
+import io
 
 POSEENDPOINT = "https://scdfxibm2020.garykim.dev/pose/model/predict"
 
-parser = argparse.ArgumentParser()
-parser.add_argument("image_path", help="Input path to image you want to predict")
-args = parser.parse_args()
+HOSTNAME = "0.0.0.0"
+PORT = 8080
+
+# parser = argparse.ArgumentParser()
+# parser.add_argument("image_path", help="Input path to image you want to predict")
+# args = parser.parse_args()
 
 
 # Get Pose Key point data
-def apiData(path=""):
+def apiData(path):
     files = {
-        'file': open(path, 'rb').read()
+        'file': path
     }
     res = requests.post(POSEENDPOINT, files=files)
     return res.json()
@@ -93,9 +96,6 @@ class Server(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 1:
-        print("Expecting 1 command line argument")
-        sys.exit(1)
     webServer = HTTPServer((HOSTNAME, PORT), Server)
 
     try:
