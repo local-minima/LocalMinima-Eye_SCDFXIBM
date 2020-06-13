@@ -5,9 +5,13 @@ import store from './store/store';
 // store.dispatch('getUser');
 // store.dispatch('getConfig');
 
+
+
 import './styles/carbon-components.min.css';
 import CarbonComponentsVue from "@carbon/vue";
 Vue.use(CarbonComponentsVue);
+
+import './styles/github-markdown.css';
 
 // Styling + Fonts
 // import '@openfonts/open-sans-condensed_all';
@@ -15,6 +19,7 @@ Vue.use(CarbonComponentsVue);
 // import 'typeface-nova-mono';
 // import 'typeface-roboto-mono';
 import 'typeface-ibm-plex-mono';
+import 'typeface-roboto';
 
 // Services
 import windowTitle from "./services/windowTitle";
