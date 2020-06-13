@@ -14,7 +14,15 @@ Our project leverages existing infrastructure (CCTVs) to detect emergency medica
 
 ### The Architecture
 
-![Our Project's Architecture](docs/Project_Architecture_Final_v3.png)
+![Our Project's Architecture](docs/Project_Architecture_Final_v4.png)
+1. A camera records a live video that is sent to the central processor.
+2. The central processor opens the detector group softwares.
+3. IBM Human Pose Estimator detects whether someone is injured or sick based on the pose (e.g. lying down motionless for too long).
+4. The blood detector detects blood based on the color.
+5. Traffic accident detector uses machine learning to identify traffic accidents.
+6. Fire detector detects uses machine learning to look for fire in accident site.
+7. The detector information is sent to the central processor and then to human reviewer for confirmation.
+8. The human reviewer will contact EMS at the location through the web browser.
 
 ### Detailed Description Link: 
 
