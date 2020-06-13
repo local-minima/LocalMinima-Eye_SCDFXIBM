@@ -1,4 +1,4 @@
-const cameraCoords = [
+let cameraCoords = [
   [
     103.8942610001214,
     1.335710999981316

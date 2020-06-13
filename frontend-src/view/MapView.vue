@@ -3,12 +3,14 @@
     <div id="mapid"></div>
     <map-overlay :hidden="lastMarker.marker !== undefined ? false : true" :lat="lastMarker.marker !== undefined ? lastMarker.marker.getLatLng().lat : 0" :lng="lastMarker.marker !== undefined ? lastMarker.marker.getLatLng().lng : 0"/>
     <camera-feed :hidden="lastMarker.marker !== undefined ? false : true" :seed="lastMarker.marker !== undefined ? lastMarker.marker.getLatLng().lat*lastMarker.marker.getLatLng().lng*10000 : 0" :isBad="lastMarker.marker !== undefined ? lastMarker.isBad: false" />
+    <callbox :hidden="lastMarker.marker !== undefined ? false : true"/>
   </div>
 </template>
 
 <script>
 import MapOverlay from '../components/MapOverlay';
 import CameraFeed from '../components/CameraFeed';
+import Callbox from '../components/Callbox';
 
 import {cameraCoords} from '../points';
 import CameraFeedVue from '../components/CameraFeed.vue';
@@ -147,6 +149,7 @@ export default {
   components: {
     'map-overlay': MapOverlay,
     'camera-feed': CameraFeed,
+    'callbox': Callbox,
   },
 };
 </script>

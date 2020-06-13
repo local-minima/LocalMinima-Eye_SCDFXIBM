@@ -2,7 +2,7 @@
   <cv-header aria-label="Carbon header">
     <cv-header-menu-button aria-label="Header menu" aria-controls="side-nav" />
     <cv-skip-to-content href="#main-content">Skip to content</cv-skip-to-content>
-    <cv-header-name href="javascript:void(0)" prefix="IBM">[Platform]</cv-header-name>
+    <cv-header-name href="javascript:void(0)" prefix="[SCDF x IBM]">Funnel</cv-header-name>
     <cv-header-nav aria-label="Carbon nav">
       <cv-header-menu-item href="javascript:void(0)">Link 1</cv-header-menu-item>
       <cv-header-menu-item href="javascript:void(0)">Link 2</cv-header-menu-item>
