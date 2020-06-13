@@ -13,6 +13,8 @@ Vue.use(CarbonComponentsVue);
 // import '@openfonts/open-sans-condensed_all';
 // import 'typeface-noto-serif-jp';
 // import 'typeface-nova-mono';
+// import 'typeface-roboto-mono';
+import 'typeface-ibm-plex-mono';
 
 // Services
 import windowTitle from "./services/windowTitle";

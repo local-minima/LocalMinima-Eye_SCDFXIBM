@@ -1,6 +1,7 @@
 <template>
   <div id="overlay-root" :style="hidden ? 'transform: translate(500px,0px);' : ''">
     <canvas id="map" />
+    <h1 id="info">{{(markers+'').padStart(3, '0')}} responders nearby</h1>
   </div>
 </template>
 
@@ -50,6 +51,11 @@ export default {
   //   document.getElementById('overlay-root').style.transform = 'transform: translate(-500px,0px);'
   // },
   props: ["hidden", "lat", "lng"],
+  data() {
+    return {
+      markers: 0,
+    };
+  },
   watch: {
     lat: function() {
       this.updateLocation();
@@ -76,6 +82,7 @@ export default {
       }
 
       map.update();
+      this.markers = options.markers.length;
     }
   },
   mounted() {
@@ -130,7 +137,8 @@ export default {
   right: 0;
   top: 0;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  /* justify-content: center; */
   align-items: center;
   width: 400px;
   height: 60vh;
@@ -143,10 +151,24 @@ export default {
   /* background: #fff; */
   transition-property: transform;
   transition-duration: 1s;
+  /* font-family: 'Roboto Mono', monospace; */
+  font-family: 'IBM Plex Mono', monospace;
+  background-color: #161616;
+  color: #f4f4f4;
+
 }
 
 #map {
-  height: 100%;
+  height: calc(100% - 3rem);
   width: 400px;
+}
+
+#info {
+  height: 3rem;
+  width: 100%;
+  font-size: 1.5rem;
+  border-left: 6px solid #95dfcc;
+  padding-left: 10px;
+  /* text-align: right; */
 }
 </style>
