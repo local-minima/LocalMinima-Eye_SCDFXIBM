@@ -10,6 +10,14 @@
 
 ##### Yong Gi Roh
 
+### Short Description
+
+### Pitch Video Link: 
+
+### The Architecture
+
+### Detailed Description Link: 
+
 ### Getting Started
 
 ```bash
