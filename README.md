@@ -14,7 +14,7 @@ Our project leverages existing infrastructure (CCTVs) to detect emergency medica
 
 ### The Architecture
 
-![Our Project's Architecture](docs/Project_Architecture_Final.png)
+![Our Project's Architecture](docs/Project_Architecture_Final_v2.png)
 
 ### Detailed Description Link: 
 
