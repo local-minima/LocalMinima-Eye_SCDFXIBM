@@ -10,17 +10,23 @@
       <!-- <h1 id="info">camera feed</h1> -->
       <div id="info" :style="(isBad ? 'border-left: 6px solid #ff00fe !important;' : '')">
         <h1>camera feed</h1>
-        <img :id="isBad ? 'active' : 'inactive'" @mouseout="unhover()" @mouseover="hover('blood')" src="/icon/blood.svg" style="padding-bottom: 5px;" />
-        <img :id="isBad ? 'active' : 'inactive'" @mouseout="unhover()" @mouseover="hover('crash')" src="/icon/crash.svg" />
-        <img :id="isBad ? 'active' : 'inactive'" @mouseout="unhover()" @mouseover="hover('fall')" src="/icon/fall.svg" />
+        <img :id="problem ==='blood' ? 'active' : 'inactive'" @mouseout="unhover()" @mouseover="hover('blood')" src="/icon/blood.svg" style="padding-bottom: 5px;" />
+        <img :id="problem ==='crash' ? 'active' : 'inactive'" @mouseout="unhover()" @mouseover="hover('crash')" src="/icon/crash.svg" />
+        <img :id="problem ==='fall' ? 'active' : 'inactive'" @mouseout="unhover()" @mouseover="hover('fall')" src="/icon/fall.svg" />
       </div>
     </div>
-    <tipbox :hidden="!showTip" :text="tipMsg" :isBad="isBad" />
+    <tipbox :hidden="!showTip" :text="tipMsg" :isBad="onHover === problem" />
   </div>
 </template>
 
 <script>
 import Tipbox from "./Tipbox";
+
+const messages = {
+  'blood': ['blood detector inactive', '*blood detector activated*'],
+  'crash': ['crash detector inactive', '*crash detector activated*'],
+  'fall': ['fall detector inactive', '*fall detector activated*'],
+};
 
 export default {
   name: "camera-feed",
@@ -36,10 +42,20 @@ export default {
     hidden() {
       if (this.hidden) this.showTip = false;
     },
+    seed() {
+      this.showTip = false;
+      if (this.isBad) {
+        
+        this.problem = ['blood', 'crash', 'fall'][Math.floor(this.seed) % 3];
+      } else {
+        this.problem = 'none';
+      }
+    }
   },
   data() {
     return {
       index: 0,
+      problem: '',
       images: [
         "cheene-ru-jPP4i-sirtA-unsplash.jpg-gray.jpg",
         "lily-banse-2vcqwRL2xKk-unsplash.jpg-gray.jpg",
@@ -49,22 +65,26 @@ export default {
       ],
       showTip: false,
       tipMsg: '',
-
+      onHover: '',
+      nextState: false,
     };
   },
   methods: {
     hover(icon) {
       this.showTip = false;
+      this.nextState = true;
       setTimeout(() => {
         if (this.hidden) return;
-        this.showTip = true;
-        this.tipMsg = icon;
+        this.showTip = this.nextState;
+        this.tipMsg = messages[icon][icon === this.problem ? 1 : 0];
+        this.onHover = icon;
       }, 500);
       
     },
     unhover(icon) {
       this.showTip = false;
       this.tipMsg = '';
+      this.nextState = false;
     }
   }
 };
