@@ -38,4 +38,12 @@ npm run frontend:dev
 
 ### IBM Functions
 
-One of the important parts of how our system works involves pose detection. This is done with the [IBM Human Pose Estimator](https://github.com/IBM/MAX-Human-Pose-Estimator) which is running on an IBM Virtual Server.
+Many of the components of this system relies on APIs that are being run on the IBM cloud infrastructure.
+
+The following are API endpoints that are being run on IBM Cloud and are extensively used throughout this system.
+
+`https://scdfxibm2020.garykim.dev/traffic`
+`https://scdfxibm2020.garykim.dev/pose/model/predict`
+`https://scdfxibm2020.garykim.dev/fire`
+
+You can actually use many of these components on their own.
