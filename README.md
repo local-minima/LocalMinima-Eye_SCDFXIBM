@@ -7,7 +7,7 @@
 ##### Yong Gi Roh
 
 ### Short Description
-Our project leverages infrastructure (CCTVs) to detect emergency medical situations automatically (e.g. cardiac arrest or car crash). Once the program detects the situation as exceeding a certain risk threshold, a human reviewer is alerted, who can then contact EMS immediately with the location and symptom information. This not only allows SCDF to deliver a more timely response to emergency situations, but also allows them to assist vulnerable cohorts (e.g. elderly with no next to kin) in need.
+Our project leverages existing infrastructure (CCTVs) to detect emergency medical situations automatically (e.g. cardiac arrest or car crash). Once the program detects the situation as exceeding a certain risk threshold, a human reviewer is alerted, who can then contact EMS immediately with the location and symptom information. This not only allows SCDF to deliver a more timely response to emergency situations, but also allows them to assist vulnerable cohorts (e.g. elderly with no next to kin) in need.
 
 ### Pitch Video Link: 
 [Video Link](https://youtube.com)
