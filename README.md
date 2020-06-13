@@ -1,19 +1,16 @@
 # LocalMinima-Eye_SCDFXIBM
 
 ### Local Minima's Team Members
-
 ##### Alan Chang
-
 ##### Alex Hsia
-
 ##### Gary Kim
-
 ##### Yong Gi Roh
 
 ### Short Description
 Our project aims to utilize the public cam and CCTV infrastructure to detect emergency medical situations automatically (e.g. cardiac arrest or car crash) and contact EMS immediately with the location and symptom information. This not only allows SCDF to deliver a more timely response to emergency situations, but also allows them to assist vulnerable cohorts (e.g. elderly with no next to kin) in need.
 
 ### Pitch Video Link: 
+[Video Link](https://youtube.com)
 
 ### The Architecture
 
