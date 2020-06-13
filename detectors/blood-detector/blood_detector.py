@@ -78,5 +78,31 @@ def blood_near_any_person(path_to_img):
             return True
     return False
 
+class Server(BaseHTTPRequestHandler):
+    def do_POST(self):
+        self.send_response(200)
+        self.send_header('Content-Type', 'application/json')
+        self.end_headers()
+        length = int(self.headers['content-length'])
+        thisline = self.rfile.readline() + self.rfile.readline() + self.rfile.readline() + self.rfile.readline()
+        length -= len(thisline)
+        data = self.rfile.read(length)
 
-print(blood_near_any_person(args.image_path))
+        self.wfile.write(bytes(str(blood_near_any_person(io.BytesIO(data))), 'utf8'))
+        self.send_response(200)
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 1:
+        print("Expecting 1 command line argument")
+        sys.exit(1)
+    webServer = HTTPServer((HOSTNAME, PORT), Server)
+
+    try:
+        webServer.serve_forever()
+        print("started")
+    except KeyboardInterrupt:
+        pass
+
+    webServer.server_close()
+    print("Server stopped.")

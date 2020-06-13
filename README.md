@@ -42,8 +42,10 @@ Many of the components of this system relies on APIs that are being run on the I
 
 The following are API endpoints that are being run on IBM Cloud and are extensively used throughout this system.
 
-`https://scdfxibm2020.garykim.dev/traffic`
-`https://scdfxibm2020.garykim.dev/pose/model/predict`
-`https://scdfxibm2020.garykim.dev/fire`
+* `https://scdfxibm2020.garykim.dev/traffic`
+* `https://scdfxibm2020.garykim.dev/pose/model/predict`
+* `https://scdfxibm2020.garykim.dev/fire`
+* `https://scdfxibm2020.garykim.dev/body`
+* `https://scdfxibm2020.garykim.dev/blood`
 
 You can actually use many of these components on their own.

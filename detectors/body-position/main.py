@@ -12,14 +12,14 @@ PORT = 8080
 # Top down body parts
 PRIORITIES = ["REye", "LEye", "REar", "LEar", "Nose", "Neck", "RShoudler", "LShoulder", "RHip", "LHip", "RKnee", "LKnee", "LAnkle", "RAnkle"]
 
-def apiData(path=""):
+def apiData(path):
     files = {
-        'file': open(path, 'rb').read()
+        'file': path
     }
     res = requests.post(POSEENDPOINT, files=files)
     return res.json()
 
-def isLyingDown(path=""):
+def isLyingDown(path):
     # Make prediction
     data = apiData(path)
     predictions = []
