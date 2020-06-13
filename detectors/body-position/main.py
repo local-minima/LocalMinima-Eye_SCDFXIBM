@@ -65,7 +65,7 @@ class Server(BaseHTTPRequestHandler):
         length -= len(thisline)
         data = self.rfile.read(length)
 
-        self.wfile.write(bytes(str(1 - isLyingDown(io.BytesIO(data))), 'utf8'))
+        self.wfile.write(bytes(str(isLyingDown(io.BytesIO(data))), 'utf8'))
         self.send_response(200)
 
 
