@@ -2,12 +2,16 @@
   <div>
     <div id="mapid"></div>
     <map-overlay :hidden="lastMarker.marker !== undefined ? false : true" :lat="lastMarker.marker !== undefined ? lastMarker.marker.getLatLng().lat : 0" :lng="lastMarker.marker !== undefined ? lastMarker.marker.getLatLng().lng : 0"/>
+    <camera-feed :hidden="lastMarker.marker !== undefined ? false : true" :seed="lastMarker.marker !== undefined ? lastMarker.marker.getLatLng().lat*lastMarker.marker.getLatLng().lng*10000 : 0"/>
   </div>
 </template>
 
 <script>
 import MapOverlay from '../components/MapOverlay';
+import CameraFeed from '../components/CameraFeed';
+
 import {cameraCoords} from '../points';
+import CameraFeedVue from '../components/CameraFeed.vue';
 
 const badMarkIcon = L.icon({
     iconUrl: '/bad-marker.png',
@@ -67,6 +71,12 @@ export default {
       const marker = L.marker(loc, {
         icon: isBad ? badMarkIcon : new L.Icon.Default(),
       });
+      // const marker = L.circle(loc, {
+      //   color: 'red',
+      //   fillColor: '#f03',
+      //   fillOpacity: 0.5,
+      //   radius: 30,
+      // })
       
       marker.addTo(this.mymap);
       marker.on('click', function(e) {this.handleCameraClick(e, marker, isBad)}.bind(this));
@@ -82,7 +92,8 @@ export default {
       if (this.lastMarker.marker !== undefined) this.lastMarker.marker.setIcon(this.lastMarker.isBad ? badMarkIcon : new L.Icon.Default());
       marker.setIcon(selectMarkIcon)
       const center = this.mymap.latLngToLayerPoint(e.latlng).subtract(this.mymap.containerPointToLayerPoint(this.mymap.getSize()._divideBy(2)));
-      this.mymap.panBy(center.subtract([-window.innerWidth/6,0]));
+      // this.mymap.panBy(center.subtract([-window.innerWidth/6,0]));
+      this.mymap.panBy(center.subtract([0,0]));
       
       this.$set(this.lastMarker, 'marker', marker);
       this.$set(this.lastMarker, 'isBad', isBad);
@@ -98,6 +109,7 @@ export default {
   },
   components: {
     'map-overlay': MapOverlay,
+    'camera-feed': CameraFeed,
   },
 };
 </script>

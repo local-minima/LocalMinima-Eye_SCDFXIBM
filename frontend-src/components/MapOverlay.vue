@@ -141,6 +141,7 @@ export default {
   /* justify-content: center; */
   align-items: center;
   width: 400px;
+  max-width: calc(100vw - 40px);
   height: 60vh;
   background-color: white;
   margin-top: 20vh;
@@ -161,6 +162,7 @@ export default {
 #map {
   height: calc(100% - 3rem);
   width: 400px;
+  max-width: calc(100vw - 40px);
 }
 
 #info {
