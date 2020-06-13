@@ -23,6 +23,7 @@ Our project leverages existing infrastructure (CCTVs) to detect emergency medica
 6. Fire detector detects uses machine learning to look for fire in accident site.
 7. The detector information is sent to the central processor and then to human reviewer for confirmation.
 8. The human reviewer will contact EMS at the location through the web browser.
+9. Local EMS will be dispatched.
 
 ### Detailed Description Link: 
 
