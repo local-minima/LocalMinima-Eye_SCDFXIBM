@@ -5,13 +5,45 @@
 </template>
 
 <script>
+const scale = 5;
+// const geometry = new THREE.BoxGeometry(1 * scale, 1 * scale, 50 * scale);
+const geometry = new THREE.ConeGeometry( 5, 20, 3 ).rotateX(-Math.PI/2);
+
+const prePassMaterial = new THREE.MeshStandardMaterial({
+  color: "#ff00fe",
+  opacity: 0.3,
+  depthTest: false,
+  transparent: true
+});
+const material = new THREE.MeshStandardMaterial({
+  color: "#ff00fe",
+  opacity: 0.9,
+  transparent: true
+});
+
+function createCube() {
+  const cube = new THREE.Object3D();
+
+  const prePassMesh = new THREE.Mesh(geometry, prePassMaterial);
+  prePassMesh.renderOrder = Number.MAX_SAFE_INTEGER - 1;
+  cube.add(prePassMesh);
+
+  const mesh = new THREE.Mesh(geometry, material);
+  mesh.renderOrder = Number.MAX_SAFE_INTEGER;
+  cube.add(mesh);
+  return cube;
+}
+
+let map;
 const options = {
   tilt: 50,
   // distance: 3000,
-  distance: 300,
+  distance: 700,
   center: new harp.GeoCoordinates(1.3455, 103.8361),
-  angle: 50
+  angle: 50,
+  markers: []
 };
+
 export default {
   name: "map-overlay",
   // beforeMount() {
@@ -20,14 +52,34 @@ export default {
   props: ["hidden", "lat", "lng"],
   watch: {
     lat: function() {
-      options.center = new harp.GeoCoordinates(this.lat, this.lng)
+      this.updateLocation();
     },
     lng: function() {
-      options.center = new harp.GeoCoordinates(this.lat, this.lng)
+      this.updateLocation();
+    }
+  },
+  methods: {
+    updateLocation() {
+      options.center = new harp.GeoCoordinates(this.lat, this.lng);
+      for (let each of options.markers) {
+        map.mapAnchors.remove(each);
+      }
+      options.markers = [];
+
+      const count = Math.floor(Math.random()*3)+3;
+      for (let i = 0; i < count; i++) {
+        let marker = new harp.GeoCoordinates(this.lat+Math.random()*0.006-0.003, this.lng+Math.random()*0.006-0.003, 50);
+        const cube = createCube();
+        cube.geoPosition = marker;
+        map.mapAnchors.add(cube);
+        options.markers.push(cube);
+      }
+
+      map.update();
     }
   },
   mounted() {
-    const map = new harp.MapView({
+    map = new harp.MapView({
       canvas: document.getElementById("map"),
       theme: "/3d-theme.json",
       maxVisibleDataSourceTiles: 40,
@@ -56,18 +108,15 @@ export default {
     map.addDataSource(omvDataSource);
 
     // const controls = new harp.MapControls(map);
-    options.center = new harp.GeoCoordinates(this.lat, this.lng)
-    map.addEventListener(
-      harp.MapViewEventNames.Render,
-      () => {
-        map.lookAt(
-          options.center,
-          options.distance,
-          options.tilt,
-          (options.angle += 0.07)
-        );
-      }
-    );
+    options.center = new harp.GeoCoordinates(this.lat, this.lng);
+    map.addEventListener(harp.MapViewEventNames.Render, () => {
+      map.lookAt(
+        options.center,
+        options.distance,
+        options.tilt,
+        (options.angle += 0.07)
+      );
+    });
     map.beginAnimation();
     // document.getElementById('overlay-root').style.transform = '';
     // this.hidden = false;
