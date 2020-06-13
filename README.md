@@ -16,6 +16,8 @@
 
 ### The Architecture
 
+![Our Project's Architecture](docs/Project_Architecture.png)
+
 ### Detailed Description Link: 
 
 ### Getting Started
