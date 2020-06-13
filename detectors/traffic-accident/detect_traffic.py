@@ -1,6 +1,8 @@
-# python3 -m pip install --upgrade tensorflow keras pillow
+# python3 -m pip install --upgrade tensorflow efficientnet keras pillow
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
+import efficientnet.keras
+import efficientnet.tfkeras
 import tensorflow as tf
 from PIL import Image
 import numpy as np
