@@ -7,8 +7,6 @@
 </template>
 
 <script>
-// import '../styles/dark.min.css';
-import MarkdownIt from "markdown-it";
 import readmeFile from "../../README.md";
 
 export default {
@@ -30,7 +28,6 @@ export default {
 li {
   list-style-type: decimal !important;
 }
-
 </style>
 
 <style scoped >

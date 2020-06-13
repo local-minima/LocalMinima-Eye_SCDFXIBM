@@ -1,5 +1,7 @@
 # LocalMinima-Eye_SCDFXIBM
 
+![Screenshot](docs/screenshot.png)
+
 ### Local Minima's Team Members
 ##### Alan Chang
 ##### Alex Hsia

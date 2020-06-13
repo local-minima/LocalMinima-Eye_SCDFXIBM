@@ -16,6 +16,13 @@ export default {
 };
 </script>
 
+<style>
+a.bx--header__menu-item[aria-current='page']::after, .bx--header__menu-item--current::after {
+
+  border-bottom: 3px solid #95dfcc !important;
+}
+</style>
+
 <style lang="less" scoped>
 #router {
   padding-top: 48px;
