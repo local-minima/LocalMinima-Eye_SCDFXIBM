@@ -2,7 +2,7 @@
   <div>
     <div id="mapid"></div>
     <map-overlay :hidden="lastMarker.marker !== undefined ? false : true" :lat="lastMarker.marker !== undefined ? lastMarker.marker.getLatLng().lat : 0" :lng="lastMarker.marker !== undefined ? lastMarker.marker.getLatLng().lng : 0"/>
-    <camera-feed :hidden="lastMarker.marker !== undefined ? false : true" :seed="lastMarker.marker !== undefined ? lastMarker.marker.getLatLng().lat*lastMarker.marker.getLatLng().lng*10000 : 0"/>
+    <camera-feed :hidden="lastMarker.marker !== undefined ? false : true" :seed="lastMarker.marker !== undefined ? lastMarker.marker.getLatLng().lat*lastMarker.marker.getLatLng().lng*10000 : 0" :isBad="lastMarker.marker !== undefined ? lastMarker.isBad: false" />
   </div>
 </template>
 
@@ -97,7 +97,7 @@ export default {
     // console.log(carmer);
     // console.log(cameraCoords);
     
-    let points = cameraCoords.map(e => [[e[1],e[0]], Math.random()>0.8 ? true : false]);
+    let points = cameraCoords.map(e => [[e[1],e[0]], Math.random()>0.9 ? true : false]);
     // console.log(points);
     const markers_ref = [];
     for (let each of points) {

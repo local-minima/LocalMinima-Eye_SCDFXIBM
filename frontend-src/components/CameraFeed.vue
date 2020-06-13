@@ -1,33 +1,71 @@
 <template>
-  <div id="overlay-root" :style="hidden ? 'transform: translate(-500px,0px);' : ''">
-    
-<!-- 'cheene-ru-jPP4i-sirtA-unsplash.jpg-gray.jpg',
+  <div>
+    <div id="overlay-root" :style="(hidden ? 'transform: translate(-500px,0px);' : '')">
+      <!-- 'cheene-ru-jPP4i-sirtA-unsplash.jpg-gray.jpg',
 'lily-banse-2vcqwRL2xKk-unsplash.jpg-gray.jpg',
 'lily-banse-C93HrzumjI0-unsplash.jpg-gray.jpg',
 'lily-banse-H4UWdOd5vQM-unsplash-gray.jpg',
-'lily-banse-Rl6Xep37xS0-unsplash.jpg-gray.jpg', -->
-    <img id="feed" :src="'images/'+images[Math.floor(seed) % images.length]" alt="">
-    <h1 id="info">camera feed</h1>
+      'lily-banse-Rl6Xep37xS0-unsplash.jpg-gray.jpg',-->
+      <img id="feed" :src="'images/'+images[Math.floor(seed) % images.length]" alt />
+      <!-- <h1 id="info">camera feed</h1> -->
+      <div id="info" :style="(isBad ? 'border-left: 6px solid #ff00fe !important;' : '')">
+        <h1>camera feed</h1>
+        <img :id="isBad ? 'active' : 'inactive'" @mouseout="unhover()" @mouseover="hover('blood')" src="/icon/blood.svg" style="padding-bottom: 5px;" />
+        <img :id="isBad ? 'active' : 'inactive'" @mouseout="unhover()" @mouseover="hover('crash')" src="/icon/crash.svg" />
+        <img :id="isBad ? 'active' : 'inactive'" @mouseout="unhover()" @mouseover="hover('fall')" src="/icon/fall.svg" />
+      </div>
+    </div>
+    <tipbox :hidden="!showTip" :text="tipMsg" :isBad="isBad" />
   </div>
 </template>
 
 <script>
+import Tipbox from "./Tipbox";
 
 export default {
   name: "camera-feed",
-  props: ['hidden', 'seed'],
+  props: ["hidden", "seed", 'isBad'],
+  components: {
+    tipbox: Tipbox
+  },
   watch: {
     seed() {
       console.log(this.seed);
       console.log(this.seed % this.images.length);
-    
-    }
+    },
+    hidden() {
+      if (this.hidden) this.showTip = false;
+    },
   },
   data() {
     return {
       index: 0,
-      images: ['cheene-ru-jPP4i-sirtA-unsplash.jpg-gray.jpg','lily-banse-2vcqwRL2xKk-unsplash.jpg-gray.jpg','lily-banse-C93HrzumjI0-unsplash.jpg-gray.jpg','lily-banse-H4UWdOd5vQM-unsplash-gray.jpg','lily-banse-Rl6Xep37xS0-unsplash.jpg-gray.jpg'],
+      images: [
+        "cheene-ru-jPP4i-sirtA-unsplash.jpg-gray.jpg",
+        "lily-banse-2vcqwRL2xKk-unsplash.jpg-gray.jpg",
+        "lily-banse-C93HrzumjI0-unsplash.jpg-gray.jpg",
+        "lily-banse-H4UWdOd5vQM-unsplash-gray.jpg",
+        "lily-banse-Rl6Xep37xS0-unsplash.jpg-gray.jpg"
+      ],
+      showTip: false,
+      tipMsg: '',
+
     };
+  },
+  methods: {
+    hover(icon) {
+      this.showTip = false;
+      setTimeout(() => {
+        if (this.hidden) return;
+        this.showTip = true;
+        this.tipMsg = icon;
+      }, 500);
+      
+    },
+    unhover(icon) {
+      this.showTip = false;
+      this.tipMsg = '';
+    }
   }
 };
 </script>
@@ -54,10 +92,9 @@ export default {
   transition-property: transform;
   transition-duration: 1s;
   /* font-family: 'Roboto Mono', monospace; */
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
   background-color: #161616;
   color: #f4f4f4;
-
 }
 
 #feed {
@@ -70,11 +107,31 @@ export default {
 #info {
   height: 3rem;
   width: 100%;
+  display: flex;
+
   font-size: 1.5rem;
   border-left: 6px solid #95dfcc;
   padding-left: 10px;
   vertical-align: middle;
 
+  align-items: center;
   /* text-align: right; */
+}
+
+#info > h1 {
+  height: 3rem;
+  width: 100%;
+  font-size: 1.5rem;
+}
+
+#info > img {
+  filter: invert(1);
+  height: 100%;
+  width: 50px;
+  object-fit: cover;
+}
+
+#active {
+  filter: invert(20%) sepia(73%) saturate(3866%) hue-rotate(293deg) brightness(111%) contrast(133%) !important;
 }
 </style>
