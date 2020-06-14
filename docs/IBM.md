@@ -2,7 +2,7 @@
 
 Our project relies very heavily on IBM Cloud services to function. In normal operation, the system will very often call several APIs to identify whether a frame includes a dangerous situation. 
 
-This software uses the following APIs that are hosted on IBM Cloud:
+This software uses the following APIs that are hosted on an IBM Cloud virtual server:
 
 * Traffic Accident Detector: `https://scdfxibm2020.garykim.dev/traffic`
 * Human Pose Estimator: `https://scdfxibm2020.garykim.dev/pose/model/predict`
