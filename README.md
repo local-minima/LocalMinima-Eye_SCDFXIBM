@@ -1,4 +1,4 @@
-# LocalMinima-Eye_SCDFXIBM
+# LocalMinima-Funnel_SCDFXIBM
 
 ![Screenshot](docs/screenshot.png)
 
@@ -32,8 +32,8 @@ Our project leverages existing infrastructure (CCTVs) to detect emergency medica
 ### Getting Started
 
 ```bash
-git clone https://github.com/local-minima/LocalMinima-Eye_SCDFXIBM
-cd LocalMinima-Eye_SCDFXIBM
+git clone https://github.com/local-minima/LocalMinima-Funnel_SCDFXIBM
+cd LocalMinima-Funnel_SCDFXIBM
 npm install
 npm run frontend:dev
 ```
