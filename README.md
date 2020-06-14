@@ -15,7 +15,8 @@ Our project aims to utilize CCTV infrastructure to detect emergency medical situ
 ##### Yong Gi Roh
 
 ### Pitch Video Link: 
-[Video Link](https://www.youtube.com/watch?v=wgscROZJBu8)
+[![Video Link](http://img.youtube.com/vi/wgscROZJBu8/0.jpg)](http://www.youtube.com/watch?v=wgscROZJBu8)
+
 
 ### The Architecture
 
