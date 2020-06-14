@@ -17,7 +17,7 @@ Funnel uses existing infrastructures such as CCTVs and public cams to identify e
 ##### Yong Gi Roh
 
 ### Pitch Video Link: 
-[![Video Link](http://img.youtube.com/vi/cBC7acMFpKk/0.jpg)](https://youtu.be/cBC7acMFpKk)
+[![Video Link](http://img.youtube.com/vi/X7WZdvlWQQg/0.jpg)](https://youtu.be/X7WZdvlWQQg)
 
 
 ### The Architecture
