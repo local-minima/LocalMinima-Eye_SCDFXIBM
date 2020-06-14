@@ -1,0 +1,7 @@
+numpy==1.17.0
+efficientnet==1.1.0
+opencv_python_headless==4.2.0.32
+requests==2.23.0
+tensorflow_cpu==2.2.0
+Pillow==7.1.2
+tensorflow==2.2.0
