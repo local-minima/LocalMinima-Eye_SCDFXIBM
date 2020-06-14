@@ -7,7 +7,7 @@
 'lily-banse-H4UWdOd5vQM-unsplash-gray.jpg',
       'lily-banse-Rl6Xep37xS0-unsplash.jpg-gray.jpg',-->
       
-      <img id="feed" :src="'images/'+images[Math.floor(seed) % images.length]" v-if="problem !== 'crash'" />
+      <img id="feed" :src="'images/'+(problem === 'none' ? images[Math.floor(seed) % images.length] : problem+'.png')" v-if="problem !== 'crash'" />
       <video id="feed" class="feed-vid" style="object-position: 90% 50%;" autoplay loop v-if="problem === 'crash'">
         <source src="CCTV1.mp4" type="video/mp4">
       </video>
@@ -28,6 +28,7 @@
 
 <script>
 import Tipbox from "./Tipbox";
+
 
 const messages = {
   'blood': ['blood detector inactive', '*blood detector activated*'],
@@ -50,8 +51,8 @@ export default {
       this.showTip = false;
       if (this.isBad) {
         
-        // this.problem = ['blood', 'crash', 'fall', 'fire'][Math.floor(this.seed) % 4];
-        this.problem = 'crash';
+        this.problem = ['blood', 'crash', 'fall', 'fire'][Math.floor(this.seed) % 4];
+        // this.problem = 'fire';
 
         if (this.problem === 'crash') {
           const vid = document.querySelector(".feed-vid");
