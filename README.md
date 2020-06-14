@@ -1,7 +1,7 @@
 # LocalMinima-Funnel_SCDFXIBM
 
 ![Screenshot](docs/screenshot.png)
-*Since we didn’t want to ruin your day with gory pictures, we decided to enlighten it with some baby pictures. The purple markers with traffic accident detector activated is what the map would look like after CCTV feeds are integrated.
+*Since we didn’t want to ruin your day with gory pictures, we decided to enlighten the other purple pmarkers with some baby pictures. The purple markers with "traffic accident detector activated" is what the map would look like after CCTV feeds are integrated.
 ### Short Description
 #### Problem
 Cardiac arrest, heart attack, traumatic injuries-- the treatment of these conditions all have one thing in common. Time is the essence. If treated even a bit late, the patient can suffer from devastating permanent consequences and potentially even death.
