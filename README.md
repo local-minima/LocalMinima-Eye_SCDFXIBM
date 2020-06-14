@@ -60,31 +60,31 @@ These are hosted on an IBM Cloud Virtual Server so you won't need to build these
 * Blood Detector
 
 ```bash
-cd detectors/blood-detector && pip install -r requirements.txt && python blood_detector.py
+pip install -r requirements.txt && cd detectors/blood-detector && python blood_detector.py
 ```
 
 * Traffic Accident Detector
 
 ```bash
-cd detectors/traffic-accident && pip install -r requirements.txt && python detect_traffic.py
+pip install -r requirements.txt && cd detectors/traffic-accident && python detect_traffic.py
 ```
 
 * Fire Detector
 
 ```bash
-cd detectors/fire-detector && pip install -r requirements.txt && python detect_fire.py
+pip install -r requirements.txt && cd detectors/fire-detector && python detect_fire.py
 ```
 
 * Clutching Chest Detector
 
 ```bash
-cd detectors/body-position && pip install -r requirements.txt && python clutching_chest_detector.py
+pip install -r requirements.txt && cd detectors/body-position && python clutching_chest_detector.py
 ```
 
 * Abnormal Body Position Detector
 
 ```bash
-cd detectors/body-position && pip install -r requirements.txt && python main.py
+pip install -r requirements.txt && cd detectors/body-position && python main.py
 ```
 
 ### IBM Functions
