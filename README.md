@@ -40,6 +40,8 @@ npm run frontend:dev
 
 ### IBM Functions
 
+**More info can be found [here](docs/IBM.md).**
+
 Many of the components of this system relies on APIs that are being run on the IBM cloud infrastructure.
 
 The following are API endpoints that are being run on IBM Cloud and are extensively used throughout this system.
