@@ -3,11 +3,13 @@ import VueRouter from "vue-router";
 
 import Home from "./view/Home";
 import MapView from "./view/MapView";
+import APIView from "./view/APIView";
 Vue.use(VueRouter);
 
 const routes = [
   { path: '/', component: Home, name: "Home" },
   { path: '/map', component: MapView, name: "MapView" },
+  { path: '/api', component: APIView, name: "APIView" },
   // { path: '/dashboard', component: Dashboard, name: "Dashboard" },
   // { path: '/start/:game_id', component: Start, name: "Start" },
   // { path: '/results', component: Results, name: "Results" },
