@@ -50,6 +50,7 @@ The following are API endpoints that are being run on IBM Cloud and are extensiv
 * `https://scdfxibm2020.garykim.dev/pose/model/predict`
 * `https://scdfxibm2020.garykim.dev/fire`
 * `https://scdfxibm2020.garykim.dev/body`
+* `https://scdfxibm2020.garykim.dev/chest`
 * `https://scdfxibm2020.garykim.dev/blood`
 
 You can actually use many of these components on their own.
