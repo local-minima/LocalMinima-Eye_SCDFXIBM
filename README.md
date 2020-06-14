@@ -1,9 +1,12 @@
 # LocalMinima-Funnel_SCDFXIBM
 
 ![Screenshot](docs/screenshot.png)
-
+*Since we didn’t want to ruin your day with gory pictures, we decided to enlighten it with some baby pictures. The purple markers with traffic accident detector activated is what the map would look like after CCTV feeds are integrated.
 ### Short Description
-Our project leverages existing infrastructure (CCTVs) to detect emergency medical situations automatically (e.g. cardiac arrest or car crash). Once the program detects the situation as exceeding a certain risk threshold, a human reviewer is alerted, who can then contact EMS immediately with the location and symptom information. This not only allows SCDF to deliver a more timely response to emergency situations, but also allows them to assist vulnerable cohorts (e.g. elderly with no next to kin) in need.
+#### Problem
+Cardiac arrest, heart attack, traumatic injuries-- the treatment of these conditions all have one thing in common. Time is the essence. If treated even a bit late, the patient can suffer from devastating permanent consequences and potentially even death.
+#### How can technology help?
+Our project aims to utilize CCTV infrastructure to detect emergency medical situations automatically (e.g. cardiac arrest or car crash) and contact EMS immediately with the location and symptom information. This not only allows SCDF to deliver a more timely and efficient response to emergency situations, but also allows them to assist vulnerable cohorts (e.g. elderly with no next to kin) in need.
 
 ### Local Minima's Team Members
 ##### Alan Chang
@@ -12,7 +15,7 @@ Our project leverages existing infrastructure (CCTVs) to detect emergency medica
 ##### Yong Gi Roh
 
 ### Pitch Video Link: 
-[Video Link](https://youtube.com)
+[Video Link](https://www.youtube.com/watch?v=wgscROZJBu8)
 
 ### The Architecture
 
