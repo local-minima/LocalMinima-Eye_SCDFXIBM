@@ -13,6 +13,7 @@
         <img :id="problem ==='blood' ? 'active' : 'inactive'" @mouseout="unhover()" @mouseover="hover('blood')" src="/icon/blood.svg" style="padding-bottom: 5px;" />
         <img :id="problem ==='crash' ? 'active' : 'inactive'" @mouseout="unhover()" @mouseover="hover('crash')" src="/icon/crash.svg" />
         <img :id="problem ==='fall' ? 'active' : 'inactive'" @mouseout="unhover()" @mouseover="hover('fall')" src="/icon/fall.svg" />
+        <img :id="problem ==='fire' ? 'active' : 'inactive'" @mouseout="unhover()" @mouseover="hover('fire')" src="/icon/fire.svg" style="padding:10px;padding-top:7px;" />
       </div>
     </div>
     <tipbox height="81vh" :hidden="!showTip" side="left" :isBad="onHover === problem">
@@ -28,6 +29,7 @@ const messages = {
   'blood': ['blood detector inactive', '*blood detector activated*'],
   'crash': ['crash detector inactive', '*crash detector activated*'],
   'fall': ['fall detector inactive', '*fall detector activated*'],
+  'fire': ['fire detector inactive', '*fire detector activated*'],
 };
 
 export default {
@@ -48,7 +50,7 @@ export default {
       this.showTip = false;
       if (this.isBad) {
         
-        this.problem = ['blood', 'crash', 'fall'][Math.floor(this.seed) % 3];
+        this.problem = ['blood', 'crash', 'fall', 'fire'][Math.floor(this.seed) % 4];
       } else {
         this.problem = 'none';
       }
