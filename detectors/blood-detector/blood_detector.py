@@ -1,7 +1,9 @@
 import cv2
+from PIL import Image
 import requests
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import io
+import numpy as np
 
 POSEENDPOINT = "https://scdfxibm2020.garykim.dev/pose/model/predict"
 
@@ -33,7 +35,8 @@ def format_key_points_person(person_data):
 
 # Returns binary mask of image, where 255 = blood, 0 = no blood
 def get_blood_mask(path_to_image):
-    img = cv2.imread(path_to_image)
+    img = Image.open(path_to_image)
+    img = np.array(img)
     lower_red = (0, 0, 150)
     upper_red = (90, 90, 255)
     mask = cv2.inRange(img, lower_red, upper_red)
@@ -59,8 +62,6 @@ def get_bounding_box(key_points):
 # Returns whether or not there is a significant amount of blood near a person
 def blood_near_person(key_points, path_to_img, amount_threshold=1000):
     blood_mask = get_blood_mask(path_to_img)
-    #cv2.imshow("mask", blood_mask)
-    #cv2.waitKey()
     bounding_box = get_bounding_box(key_points)
     counter = 0
     for x_pixel in range(bounding_box[0][0], bounding_box[1][0]):
