@@ -20,6 +20,7 @@ args = {}
 
 def predict(path):
     img = Image.open(path)
+    img= img.convert('RGB')
     new_img = np.array(img.resize((224,224)))
     new_img = np.expand_dims(new_img, axis=0)
 
