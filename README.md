@@ -7,6 +7,8 @@
 Cardiac arrest, heart attack, traumatic injuries-- the treatment of these conditions all have one thing in common. Time is the essence. If treated even a bit late, the patient can suffer from devastating permanent consequences and potentially even death.
 #### How can technology help?
 Our project aims to utilize CCTV infrastructure to detect emergency medical situations automatically (e.g. cardiac arrest or car crash) and contact EMS immediately with the location and symptom information. This not only allows SCDF to deliver a more timely and efficient response to emergency situations, but also allows them to assist vulnerable cohorts (e.g. elderly with no next to kin) in need.
+#### General Overview
+Funnel uses existing infrastructures such as CCTVs and public cams to identify emergency situations as fast as possible. We use several different detectors-- pose, blood, traffic accident, and fire--to recognize danger. The information is then sent to a webpage that displays a custom map of Singapore to show where the emergency is occuring. Then, human reviewers will be able to access the information and decide whether to send it to 995 or 1777.
 
 ### Local Minima's Team Members
 ##### Alan Chang
