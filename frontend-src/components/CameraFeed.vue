@@ -6,7 +6,11 @@
 'lily-banse-C93HrzumjI0-unsplash.jpg-gray.jpg',
 'lily-banse-H4UWdOd5vQM-unsplash-gray.jpg',
       'lily-banse-Rl6Xep37xS0-unsplash.jpg-gray.jpg',-->
-      <img id="feed" :src="'images/'+images[Math.floor(seed) % images.length]" alt />
+      
+      <img id="feed" :src="'images/'+images[Math.floor(seed) % images.length]" v-if="problem !== 'crash'" />
+      <video id="feed" class="feed-vid" style="object-position: 90% 50%;" autoplay loop v-if="problem === 'crash'">
+        <source src="CCTV1.mp4" type="video/mp4">
+      </video>
       <!-- <h1 id="info">camera feed</h1> -->
       <div id="info" :style="(isBad ? 'border-left: 6px solid #ff00fe !important;' : '')">
         <h1>camera feed</h1>
@@ -39,10 +43,6 @@ export default {
     tipbox: Tipbox
   },
   watch: {
-    seed() {
-      console.log(this.seed);
-      console.log(this.seed % this.images.length);
-    },
     hidden() {
       if (this.hidden) this.showTip = false;
     },
@@ -50,7 +50,14 @@ export default {
       this.showTip = false;
       if (this.isBad) {
         
-        this.problem = ['blood', 'crash', 'fall', 'fire'][Math.floor(this.seed) % 4];
+        // this.problem = ['blood', 'crash', 'fall', 'fire'][Math.floor(this.seed) % 4];
+        this.problem = 'crash';
+
+        if (this.problem === 'crash') {
+          const vid = document.querySelector(".feed-vid");
+          vid.currentTime = 0;
+          vid.play();
+        }
       } else {
         this.problem = 'none';
       }
