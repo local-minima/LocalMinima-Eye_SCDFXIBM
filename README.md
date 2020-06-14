@@ -35,7 +35,11 @@ Funnel uses existing infrastructures such as CCTVs and public cams to identify e
 
 ### [Detailed Description](https://docs.google.com/document/d/1YqrppUyYvqs1jqTFJ0CxOdZnRa1BEf_VNqFxH6yRMlk/edit?usp=sharing)
 
-### Live Demo <https://scdfxibm2020.garykim.dev>
+### Live Demo Home Page <https://scdfxibm2020.garykim.dev>
+
+### Live Demo Map Page <https://scdfxibm2020.garykim.dev/#/map>
+
+### Live Demo API Page <https://scdfxibm2020.garykim.dev/#/api>
 
 ### Getting Started
 
