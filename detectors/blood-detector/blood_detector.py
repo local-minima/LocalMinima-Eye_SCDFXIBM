@@ -36,7 +36,7 @@ def format_key_points_person(person_data):
 # Returns binary mask of image, where 255 = blood, 0 = no blood
 def get_blood_mask(path_to_image):
     img = Image.open(path_to_image)
-    img = np.array(img)
+    img = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)
     lower_red = (0, 0, 150)
     upper_red = (90, 90, 255)
     mask = cv2.inRange(img, lower_red, upper_red)
