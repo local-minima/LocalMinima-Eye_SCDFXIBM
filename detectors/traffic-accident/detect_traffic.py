@@ -39,6 +39,7 @@ class Server(BaseHTTPRequestHandler):
         self.wfile.write(bytes(str(1 - predict(io.BytesIO(data))), 'utf8'))
         self.send_response(200)
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--image", default="", help="Input path to image you want to predict")
